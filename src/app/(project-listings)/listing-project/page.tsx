@@ -1,16 +1,13 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
+import { fetchProjects } from "../../lib/data";
+import Image from "next/image";
 import SectionGridFilterCard from "../../(project-listings)/SectionGridFilterCard";
 import projectListingsData from "../../../data/jsons/__projects.json";
 
 export interface ListingProjectPageProps {}
 
 const ListingProjectPage: FC&lt;ListingProjectPageProps&gt; = () => {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    // Simulating fetching data from "__projects.json"
-    setProjects(projectListingsData);
-  }, []);
+  const projects = await fetchProjects();
 
   return (
     <div className="container relative">
