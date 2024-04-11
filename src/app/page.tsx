@@ -13,6 +13,7 @@ import SectionGridCategoryBox from "@/components/SectionGridCategoryBox";
 import SectionBecomeAnAuthor from "@/components/SectionBecomeAnAuthor";
 import SectionVideos from "@/components/SectionVideos";
 import SectionClientSay from "@/components/SectionClientSay";
+import { fetchProjects } from '@/app/lib/data';
 import { fetchProjects } from './lib/data.ts';
 
 const DEMO_CATS: TaxonomyType[] = [
@@ -185,6 +186,16 @@ function PageHome() {
         <SectionGridFeaturePlaces cardType="card2" />
 
         <SectionHowItWork />
+
+        {/* PROJECTS LISTING */}
+        <div className="projects-listing">
+          {projects.map((project) => (
+            <div key={project._id} className="project-item">
+              <h3>{project.name}</h3>
+              <p>{project.summary}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="relative py-16">
           <BackgroundSection className="bg-orange-50 dark:bg-black/20" />
